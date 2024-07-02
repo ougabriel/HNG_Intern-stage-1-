@@ -217,6 +217,71 @@ cat /var/secure/user_passwords.txt
 ```
 ![image](https://github.com/ougabriel/HNG_Intern-stage-1-/assets/34310658/9f6d0126-db38-4944-ba3c-a99af7d033c8)
 
+### Verify Individual Users has been created
+We will use the `id` command
+```bash
+id <username>
+```
+![image](https://github.com/ougabriel/HNG_Intern-stage-1-/assets/34310658/f02e8461-93d9-4934-87c2-2e56fcfdfdca)
+
+**Verify Individual Group
+```bash
+genent group <username>
+```
+![image](https://github.com/ougabriel/HNG_Intern-stage-1-/assets/34310658/8d4ff77a-4cab-4765-86b8-f1e28fc61ab8)
+
+**Verify invidual users has a personal group with the same name as their username**
+```bash
+id <username>
+getent passwd <username>
+getent group <username>
+```
+![image](https://github.com/ougabriel/HNG_Intern-stage-1-/assets/34310658/130f51d9-96c2-407c-9ffc-a11838c50714)
+
+This will be explained in detail as given below
+
+```md
+The image shows the output of a series of commands that check user and group information for a user named "gabriel" on a Linux system. Here is an explanation of each command and its output:
+
+1. **`id gabriel`**:
+   - This command displays user and group information for the user "gabriel".
+   - Output:
+     ```
+     uid=1023(gabriel) gid=1048(gabriel) groups=1048(gabriel),1027(IT)
+     ```
+     - `uid=1023(gabriel)`: The user ID (UID) for "gabriel" is 1023.
+     - `gid=1048(gabriel)`: The primary group ID (GID) for "gabriel" is 1048, which corresponds to a group also named "gabriel".
+     - `groups=1048(gabriel),1027(IT)`: "gabriel" belongs to two groups: "gabriel" (GID 1048) and "IT" (GID 1027).
+
+2. **`getent group gabriel`**:
+   - This command retrieves the group entry for the group named "gabriel" from the system databases.
+   - Output:
+     ```
+     gabriel:x:1048:
+     ```
+     - `gabriel`: The name of the group.
+     - `x`: Placeholder indicating that the group password is stored in a shadow file (if used).
+     - `1048`: The GID of the group "gabriel".
+     - The absence of additional information indicates there are no other members in the "gabriel" group besides the user "gabriel".
+
+3. **`getent passwd gabriel`**:
+   - This command retrieves the passwd entry for the user "gabriel" from the system databases.
+   - Output:
+     ```
+     gabriel:x:1023:1048::/home/gabriel:/bin/bash
+     ```
+     - `gabriel`: The username.
+     - `x`: Placeholder indicating that the user password is stored in a shadow file.
+     - `1023`: The UID of the user "gabriel".
+     - `1048`: The GID of the user "gabriel".
+     - The fields for the user’s full name and other info are empty.
+     - `/home/gabriel`: The home directory for "gabriel".
+     - `/bin/bash`: The default shell for "gabriel".
+
+### Summary
+
+The user "gabriel" has a UID of 1023 and belongs to the primary group "gabriel" with a GID of 1048. Additionally, "gabriel" is part of the "IT" group with a GID of 1027. The home directory for "gabriel" is `/home/gabriel`, and the default shell is `/bin/bash`. There are no other members in the "gabriel" group.
+```
 ### Deleting Users
 Since the txt files were used to test the users on this machine, it will be a good idea for all this users to be deleted when the script testins is done. Here is a simple script I made to achieve this purpose.
 ```bash
