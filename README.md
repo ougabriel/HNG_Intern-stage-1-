@@ -217,6 +217,47 @@ cat /var/secure/user_passwords.txt
 ```
 ![image](https://github.com/ougabriel/HNG_Intern-stage-1-/assets/34310658/9f6d0126-db38-4944-ba3c-a99af7d033c8)
 
+### Deleting Users
+Since the txt files were used to test the users on this machine, it will be a good idea for all this users to be deleted when the script testins is done. Here is a simple script I made to achieve this purpose.
+```bash
+
+#!/bin/bash
+
+# Set the path to the password file
+PASSWORD_FILE="/var/secure/user_passwords.txt"
+
+# Check if the password file exists
+if [ ! -f "$PASSWORD_FILE" ]; then
+    echo "Password file not found. No users to delete."
+    exit 1
+fi
+
+# Read the password file and delete users
+while IFS=',' read -r username password; do
+    # Check if the user exists
+    if id "$username" &>/dev/null; then
+        echo "Deleting user: $username"
+        # Delete the user and their home directory
+        userdel -r "$username"
+    else
+        echo "User $username not found. Skipping."
+    fi
+done < "$PASSWORD_FILE"
+
+# Remove the password file
+echo "Removing password file"
+rm -f "$PASSWORD_FILE"
+
+# Remove the log file
+LOG_FILE="/var/log/user_management.log"
+if [ -f "$LOG_FILE" ]; then
+    echo "Removing log file"
+    rm -f "$LOG_FILE"
+fi
+
+echo "Hi Gabriel !! User deletion process is now completed."
+
+```
 
 ### Conclusion
 
