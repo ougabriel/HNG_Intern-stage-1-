@@ -178,7 +178,27 @@ cat /var/log/user_management.log
 ![image](https://github.com/ougabriel/HNG_Intern-stage-1-/assets/34310658/84c8f2b4-7048-4e31-b13e-cac971edbfbb)
 
 
-Confirming Error Handling and Logs Saved
+Confirming Password creation and storage
+Another set of random names was used for this purpose with the same file name `gab_users.txt`
+A random text file was called named `gab_users.txt` with the following details
+```bash
+cat << EOF > gab_users.txt
+joy; sales,finance
+ugochi; IT
+gabriel; IT
+linda; finance,marketing
+mine; graphics
+john; chef,housekeep
+mandy; welfare,finance
+ruth; marketing
+elsa; marketing,sales
+peter; management,CTO
+ugo; CEO
+EOF
+
+```
+
+Command used to get the password details of the new users and group
 ```bash
 cat /var/secure/user_passwords.txt
 ```
