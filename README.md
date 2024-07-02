@@ -142,7 +142,7 @@ log_message "Hi Gabriel Okom !! User creation is completely set-up and ready for
 
 This message (`log_message`) serves as confirmation of script execution and readiness for operational use, aiding in post-execution review and audit.
 
-#### 10. Script Testing
+#### 10. Script Testing and Verification
 A random text file was called named `gab_users.txt` with the following details
 ```bash
 cat <<EOL > gab_users.txt
@@ -182,7 +182,9 @@ sudo bash create_user.sh gab_users.txt
 
 ![image](https://github.com/ougabriel/HNG_Intern-stage-1-/assets/34310658/4adf6e62-392e-4d71-a0eb-24e6f3faaa6f)
 
-**Confirming Error Handling and Logs Saved**
+
+** 10.1:    Confirming Error Handling and Logs Saved**
+
 Logs saved with timestamps showing exact dates up to the time and seconds that it was created
 ```bash
 cat /var/log/user_management.log
@@ -191,7 +193,8 @@ cat /var/log/user_management.log
 ![image](https://github.com/ougabriel/HNG_Intern-stage-1-/assets/34310658/84c8f2b4-7048-4e31-b13e-cac971edbfbb)
 
 
-Confirming Password creation and storage
+** 10.2:    Confirming Password creation and storage**
+
 Another set of random names was used for this purpose with the same file name `gab_users.txt`
 A random text file was called named `gab_users.txt` with the following details
 ```bash
@@ -212,25 +215,31 @@ EOF
 ```
 
 Command used to get the password details of the new users and group
+
 ```bash
 cat /var/secure/user_passwords.txt
 ```
 ![image](https://github.com/ougabriel/HNG_Intern-stage-1-/assets/34310658/9f6d0126-db38-4944-ba3c-a99af7d033c8)
 
-### Verify Individual Users has been created
+**10.3:    Verify Individual Users has been created**
+
 We will use the `id` command
+
 ```bash
 id <username>
 ```
 ![image](https://github.com/ougabriel/HNG_Intern-stage-1-/assets/34310658/f02e8461-93d9-4934-87c2-2e56fcfdfdca)
 
-**Verify Individual Group
+
+**10.4: Verify Individual Group**
+
 ```bash
-genent group <username>
+getent group <username>
 ```
 ![image](https://github.com/ougabriel/HNG_Intern-stage-1-/assets/34310658/8d4ff77a-4cab-4765-86b8-f1e28fc61ab8)
 
-**Verify invidual users has a personal group with the same name as their username**
+** 10.5: Verify invidual users has a personal group with the same name as their username**
+
 ```bash
 id <username>
 getent passwd <username>
@@ -240,10 +249,11 @@ getent group <username>
 
 This will be explained in detail as given below
 
-```md
-The image shows the output of a series of commands that check user and group information for a user named "gabriel" on a Linux system. Here is an explanation of each command and its output:
+```bash
+As the task suggests, The image shows the output of a series of commands that check user and group information for a user named "gabriel".
+I have made effort to explain each command and its output:
 
-1. **`id gabriel`**:
+1. `id gabriel`:
    - This command displays user and group information for the user "gabriel".
    - Output:
      ```
@@ -253,7 +263,7 @@ The image shows the output of a series of commands that check user and group inf
      - `gid=1048(gabriel)`: The primary group ID (GID) for "gabriel" is 1048, which corresponds to a group also named "gabriel".
      - `groups=1048(gabriel),1027(IT)`: "gabriel" belongs to two groups: "gabriel" (GID 1048) and "IT" (GID 1027).
 
-2. **`getent group gabriel`**:
+2. `getent group gabriel`:
    - This command retrieves the group entry for the group named "gabriel" from the system databases.
    - Output:
      ```
@@ -264,7 +274,7 @@ The image shows the output of a series of commands that check user and group inf
      - `1048`: The GID of the group "gabriel".
      - The absence of additional information indicates there are no other members in the "gabriel" group besides the user "gabriel".
 
-3. **`getent passwd gabriel`**:
+3. `getent passwd gabriel`:
    - This command retrieves the passwd entry for the user "gabriel" from the system databases.
    - Output:
      ```
@@ -278,10 +288,16 @@ The image shows the output of a series of commands that check user and group inf
      - `/home/gabriel`: The home directory for "gabriel".
      - `/bin/bash`: The default shell for "gabriel".
 
-### Summary
+ Summary
 
-The user "gabriel" has a UID of 1023 and belongs to the primary group "gabriel" with a GID of 1048. Additionally, "gabriel" is part of the "IT" group with a GID of 1027. The home directory for "gabriel" is `/home/gabriel`, and the default shell is `/bin/bash`. There are no other members in the "gabriel" group.
+The user "gabriel" has a UID of 1023 and belongs to the primary group "gabriel" with a GID of 1048.
+Additionally, "gabriel" is part of the "IT" group with a GID of 1027.
+The home directory for "gabriel" is `/home/gabriel`, and the default shell is `/bin/bash`.
+There are no other members in the "gabriel" group.
 ```
+
+It is important to note that the commands run on the user `gabriel` has also the same output as other user created using the `create_user.sh` script.
+
 ### Deleting Users
 Since the txt files were used to test the users on this machine, it will be a good idea for all this users to be deleted when the script testins is done. Here is a simple script I made to achieve this purpose.
 ```bash
