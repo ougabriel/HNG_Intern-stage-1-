@@ -145,18 +145,31 @@ This message (`log_message`) serves as confirmation of script execution and read
 #### 10. Script Testing
 A random text file was called named `gab_users.txt` with the following details
 ```bash
-cat << EOF > gab_users.txt
-joy; sales,finance
-ugochi; IT
-gabriel; IT
-linda; finance,marketing
-mine; graphics
-john; chef,housekeep
-mandy; welfare,finance
-ruth; marketing
-elsa; marketing,sales
-peter; management,CTO
-ugo; CEO
+cat <<EOL > gab_users.txt
+ayodele; sudo,dev
+chioma; dev,www-data
+femi; sudo
+uche; dev,finance
+kunle; hr,www-data
+kemi; finance,www-data
+abiodun; sudo,marketing
+adeola; sudo,hr
+ifunanya; marketing,www-data
+chinedu; dev,sales
+amara; sales, finance
+olabisi; hr,sales
+kemi; finance,www-data
+abiodun; sudo,marketing
+sola; dev,www-data
+amara; sales, finance
+ebuka; dev,www-data
+tosin; sudo,hr
+Ifeanyi; dev,marketing
+lola; sales, finance
+chukwuemeka; hr,www-data
+bolaji; finance, dev
+nkechi; marketing, sales
+EOL
 EOF
 
 ```
