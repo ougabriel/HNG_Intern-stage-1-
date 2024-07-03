@@ -2,7 +2,8 @@
 
 
 ### Technical Article: Automating User Creation and Management with a Bash Script
-![Untitled design](https://github.com/ougabriel/HNG_Intern-stage-1-/assets/34310658/4fba30c7-5a1a-4822-b398-c64b1e642896)
+![Untitled design](https://github.com/ougabriel/HNG_Intern-stage-1-/assets/34310658/45f1d9c4-3117-4a57-9e7c-441bbce35cd9)
+
 
 
 As a DevOps engineer, efficiently managing user accounts is crucial for maintaining system security and operational efficiency. This article introduces a Bash script `create_users.sh` designed to automate the creation of users based on data from a text file, manage group assignments, generate random passwords, and maintain detailed logs of all actions performed.
